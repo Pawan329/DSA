@@ -1,4 +1,5 @@
 class Node:
+    #creating newNode
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -97,7 +98,7 @@ class DoublyLinkedList:
             count = 1
             temp = self.head
             
-            while count != pos:
+            while count != pos: # Loop will run till user entered position
                 if count == pos-1:
                     if temp.next == self.tail:
                         self.delNodeFromEnd()
@@ -116,7 +117,7 @@ class DoublyLinkedList:
         temp = self.head
         
         while temp.next != self.head :
-            print(temp.data, end = " ")
+            print(temp.data, end = " ") # print all elements in same line
             temp = temp.next
         if temp.next == self.head:
             print(temp.data, end = " ")
@@ -126,7 +127,7 @@ class DoublyLinkedList:
         # print("\n")
         while temp.prev != self.tail:
             
-            print(temp.data, end = " ")
+            print(temp.data, end = " ") # print all elements in same lin
             temp = temp.prev
         if temp.prev == self.tail:
             print(temp.data, end = " ")
