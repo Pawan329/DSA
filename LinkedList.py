@@ -18,7 +18,6 @@ class LinkedList:
 
         if self.head == 0:
             self.head = self.tail = newNode  # When there is no node Head and Tail will be the same node
-
         else:
             self.tail.addressOfNextNode = newNode  # If LL has more one or more node tail will hold address if new inserted node
             self.tail = newNode  # New tail node assignment
@@ -27,8 +26,7 @@ class LinkedList:
         newNode = Node(data)
         
         if self.head == 0:
-            self.head = self.tail = newNode
-            
+            self.head = self.tail = newNode  
         else:
             temp = self.head  # Storing address of head to temp variable
             self.head = newNode  # making newNode as head node
@@ -39,8 +37,7 @@ class LinkedList:
         temp = self.head
         
         if self.head == 0:
-            print("Invalid Operation: Linked List is empty!")
-            
+            print("Invalid Operation: Linked List is empty!")  
         else:
             while temp != 0:  # run loop till last node of LinkedList
                 temp = temp.addressOfNextNode  # traversing to LinkedList
