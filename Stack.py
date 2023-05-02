@@ -56,9 +56,13 @@ class Stack:
             
     def moveStack(self, source, target):
         
-        while s1.top != -1:
-            target.insertElement(source.peek())
-            source.deleteElement()
+        if (source.top+1) <= (target.size - target.top-1):
+            while s1.top != -1:
+                target.insertElement(source.peek())
+                source.deleteElement()
+                
+        else:
+            print("target stack doesn't have enough space!!")
         
     
 s1 = Stack(5)
