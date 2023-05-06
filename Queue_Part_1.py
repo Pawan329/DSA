@@ -79,6 +79,4 @@ q1.dequeue()
 print(q1.peek())
 # q1.enqueue("new")
 # q1.enqueue("F")
-
-q1.display()
-    
+q1.display()  
