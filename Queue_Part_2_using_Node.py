@@ -41,16 +41,22 @@ class Queue:
         
     # dequeue
     def dequeue(self):
+
+        temp = self.peek().data # storing front element, to return the deleted element  
         
         if self.isEmpty(): # checking if queue is Empty: can't delete anything so raise exception
             raise Exception("Can't dequeue: Queue is Empty!")
-            
-        elif self.front == self.rear: # special case: when front and rear are same, shift front and rear to -1
+
+        if self.front == self.rear: # special case: when front and rear are same, shift front and rear to -1
             self.rear = -1
             self.front = -1
+
+            return print("deleted element: ",temp),temp
                 
         else:  # In normal dequeue method element will be deleted from front so front will shift by +1
             self.front += 1
+
+            return print("deleted element: ",temp),temp
           
     def display(self):
         
@@ -69,6 +75,7 @@ q1.enqueue(3)
 q1.enqueue(4)
 q1.enqueue(5)
 
+q1.dequeue()
 
 q1.display()
 
