@@ -47,7 +47,7 @@ class Queue:
             
     # peek
     def peek(self):
-        if self.isEmpty():
+        if self.isEmpty(): #Checking if Queue is empty will return -1
             return -1
             
         else:
