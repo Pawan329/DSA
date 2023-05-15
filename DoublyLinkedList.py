@@ -1,4 +1,5 @@
 class Node:
+    # initializing
     def __init__(self, data):
         self.data = data
         self.next = 0
@@ -27,7 +28,7 @@ class DoublyLinkedList:
         newNode = Node(data)
         
         if self.head == 0:
-            self.head = self.tail = newNode
+            self.head = self.tail = newNode # In case of first Node insertion
             
         else:
             old_tail_next = self.tail.next
