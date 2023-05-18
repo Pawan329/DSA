@@ -1,4 +1,5 @@
 #we will use python list to perform stack operations
+
 class Stack:
     def __init__(self, size):
         self.top = -1
