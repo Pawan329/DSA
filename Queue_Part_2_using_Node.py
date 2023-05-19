@@ -78,7 +78,3 @@ q1.enqueue(5)
 q1.dequeue()
 
 q1.display()
-
-
-
-        
