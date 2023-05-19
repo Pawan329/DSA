@@ -1,7 +1,7 @@
-''' 
-In this program we will make a queue with help of Node.
-Isfull function won't be available.
-'''
+
+# In this program we will make a queue with help of Node.
+# Isfull function won't be available.
+
 
 class Node:
     def __init__(self, data):
