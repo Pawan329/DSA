@@ -126,7 +126,6 @@ class LinkedList:
             temp = temp.addressOfNextNode
         
 
-
 l1 = LinkedList()
 l1.insertNodeAtEnd(100)
 l1.insertNodeAtEnd(200)
