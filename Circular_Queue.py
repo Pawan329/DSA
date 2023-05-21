@@ -1,4 +1,4 @@
-# Circular Queue is and advaceversion of Queue
+# A Circular Queue is an extended version of a normal queue where the last element of the queue is connected to the first element of the queue forming a circle.
 
 class CircularQueue:
     def __init__(self, size):
