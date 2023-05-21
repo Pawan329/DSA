@@ -1,3 +1,5 @@
+# Circular Queue is and advaceversion of Queue
+
 class CircularQueue:
     def __init__(self, size):
         self.size = size
