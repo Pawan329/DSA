@@ -39,28 +39,32 @@ class BinaryTree:
             return self.searchNode(current.right,data)
             
     
-    def delZeroChild(self, current, data):
+    def delZeroChild(self, current, prev, data):
         
         if current == None:
             print("Not found")
             
         elif current.left == None and current.right == None and current.data == data:
-            current = None
-            return current
+            
+            if prev.data < current.data:
+                prev.right = None
+                # return prev.right
+                
+            else:
+                prev.left = None
+                # return prev.left
+                
+            
             
         elif data < current.data:
-            return self.delZeroChild(current.left, data)
+            prev = current
+            return self.delZeroChild(current.left, prev, data)
             
         else:
-            prev_current = current.right
-            return self.delZeroChild(current.right, data)
+            prev = current
+            return self.delZeroChild(current.right, prev, data)
             
-        
-
-            
-                
-                
-            
+           
             
 bt1 = BinaryTree()
 
@@ -69,8 +73,9 @@ bt1.insert(bt1.root, 90)
 bt1.insert(bt1.root, 80)
 bt1.insert(bt1.root, 95)
 bt1.insert(bt1.root, 85)
-# bt1.insert(bt1.root, 70)
-# bt1.insert(bt1.root, 110)
+bt1.insert(bt1.root, 110)
+bt1.insert(bt1.root, 115)
+bt1.insert(bt1.root, 120)
 # bt1.insert(bt1.root, 145)
 # bt1.insert(bt1.root, 23)
 # bt1.insert(bt1.root, 115)
@@ -80,9 +85,9 @@ bt1.insert(bt1.root, 85)
 
 # print(bt1.root.left.right.right)
 
-bt1.delZeroChild(bt1.root, 85)
+bt1.delZeroChild(bt1.root,None, 120)
 
-print(bt1.root.left.left.right.data)
+print(bt1.root.right.right.right)
 
 
 
