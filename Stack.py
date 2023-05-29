@@ -99,9 +99,3 @@ s2.display()
 
 print("*** S1 ***")
 s1.statusOfStack()
-
-
-
-
-
-
