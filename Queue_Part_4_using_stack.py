@@ -110,17 +110,4 @@ q1.display()
 
 print("==Enqueue==")
 q1.enqueue("new1")
-q1.display()
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            
-
+q1.display()    
