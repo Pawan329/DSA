@@ -116,9 +116,6 @@ class BTree:
         return self.max(current.right)    
         
             
-            
-        
-
 
 t1= BTree()
 
@@ -142,7 +139,3 @@ t1.deleteNode(70)
 t1.deleteNode(40)
 
 print(t1.root.left.value)
-
-
-
-
