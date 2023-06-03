@@ -1,3 +1,5 @@
+# Creating Binary Tree using recursion and Insert/ Delete Node function added
+
 class Node:
     
     def __init__(self,value):
@@ -5,21 +7,25 @@ class Node:
         self.left= None
         self.right= None
         
-
 class BTree:
     
+    # Initially Root node of the Tree will be None
     def __init__(self):
         self.root= None
     
+    # Add Node function, It take current as Root Node and traverse to 
+    # the right location and insert node with given value
     def addNode(self,current,value):
         
+        # In case of first Node current will be None
         if current is None:
             return Node(value)
         
-        #LEFT
+        # LEFT - Move Current
         if value < current.value:
             current.left= self.addNode(current.left,value)
-        #RIGHT
+        
+        #RIGHT - Move Current
         else:
             current.right= self.addNode(current.right,value)
         
@@ -30,14 +36,17 @@ class BTree:
         current= self.root
         prev= None
         
-        while current is not None:
+        # Traverse till current will become None (Reach to leaf Node)
+        while current != None:
             
-            #NODE FOUND
+            # NODE FOUND
             if current.value == value:
-                #TWO CHILD
+                
+                # TWO CHILD
                 if current.left != None and current.right != None:
                     self.twoChild(current)
-                #ONE CHILD
+                
+                # ONE CHILD
                 elif current.left != None or current.right != None:
                     self.oneChild(prev,current)
                     
@@ -57,6 +66,8 @@ class BTree:
     
     def zeroChild(self,parent,current):
         
+        # Parent node has greater value make Parent's Right Node as None 
+        # Else - Make Left Node as None
         if current.value > parent.value:
             parent.right= None
         else:
@@ -65,25 +76,28 @@ class BTree:
     def oneChild(self,parent,current):
         
         #CURRENT HAS LEFT CHILD
-        isLeft= False
+        isLeft = False
         
-        if current.left is not None:
-            isLeft= True    
-        #CURRENT HAS RIGHT CHILD
-       
+        if current.left != None:
+            isLeft = True    
         
         if parent.left == current:
+           
+            # If current has Node in left side
+            if isLeft == True:
+                parent.left = current.left
             
-            if isLeft:
-                parent.left= current.left
+            # If current has Node in right side
             else:
-                parent.left= current.right
+                parent.left = current.right
             
             return
         
-        
-        if isLeft:
+        # If Current has Node in left side
+        if isLeft == True:
             parent.right= current.left
+        
+        # If current has Node in right side
         else:
             parent.right= current.right
             
@@ -94,11 +108,9 @@ class BTree:
         self.deleteNode(maxVal)
         current.value= maxVal
         
-        
-    
     def max(self,current):
         
-        if current.right is None:
+        if current.right == None:
             return current.value
         
         return self.max(current.right)    
