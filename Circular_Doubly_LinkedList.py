@@ -66,7 +66,6 @@ class DoublyLinkedList:
                     newNode.prev = current_temp
                     
                     break
-                
                 else:
                     temp = temp.next
                     count += 1
