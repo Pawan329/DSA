@@ -1,3 +1,7 @@
+# A circular doubly linked list is a mixture of a doubly linked list and a circular linked list.
+# Like the doubly linked list, it has an extra pointer called the previous pointer, 
+# and similar to the circular linked list, its last node points at the head node.
+
 class Node:
     #creating newNode
     def __init__(self, data):
