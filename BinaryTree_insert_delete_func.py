@@ -115,7 +115,23 @@ class BTree:
         
         return self.max(current.right)    
         
-            
+      
+    def preOrderTraversal(self, current):
+        
+        if current is None:
+            return
+        print(current.value, end=" ")
+        self.preOrderTraversal(current.left)
+        self.preOrderTraversal(current.right)
+         
+         
+    # def postOrderTraversal(self, current):
+    #     if current is None:
+    #         return
+    #     print(current.value, end=" ")
+    #     self.preOrderTraversal(current.left)   
+        
+
 
 t1= BTree()
 
@@ -134,8 +150,14 @@ t1.addNode(t1.root,65)
 #ZERO CHILD
 #t1.deleteNode(45)
 #ONE CHILD
-t1.deleteNode(70)
+# t1.deleteNode(70)
 #TWO CHILD
-t1.deleteNode(40)
+# t1.deleteNode(40)
 
-print(t1.root.left.value)
+t1.preOrderTraversal(t1.root)
+
+
+
+
+
+
