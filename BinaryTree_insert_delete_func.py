@@ -1,7 +1,7 @@
 # Creating Binary Tree using recursion and Insert/ Delete Node function added
 
 class Node:
-    
+    # Node creation
     def __init__(self,value):
         self.value= value
         self.left= None
@@ -9,12 +9,12 @@ class Node:
         
 class BTree:
     
-    # Initially Root node of the Tree will be None
+    # Initially Root node will created with "None" value
     def __init__(self):
         self.root= None
     
     # Add Node function, It take current as Root Node and traverse to 
-    # the right location and insert node with given value
+    # the left or right location and insert new node according to their value
     def addNode(self,current,value):
         
         # In case of first Node current will be None
@@ -23,7 +23,7 @@ class BTree:
         
         # LEFT - Move Current
         if value < current.value:
-            current.left= self.addNode(current.left,value)
+            current.left = self.addNode(current.left,value)
         
         #RIGHT - Move Current
         else:
@@ -33,8 +33,11 @@ class BTree:
         
     def deleteNode(self,value):
         
-        current= self.root
-        prev= None
+        current = self.root
+        prev = None
+        
+        if current == None:
+            return print("Tree is Empty!")
         
         # Traverse till current will become None (Reach to leaf Node)
         while current != None:
@@ -54,8 +57,8 @@ class BTree:
                 else:
                     self.zeroChild(prev,current)
                     
-                
             prev= current    
+            
             #LEFT
             if value < current.value:
                 current= current.left
@@ -63,17 +66,17 @@ class BTree:
             #RIGHT
             else:
                 current= current.right
-    
-    def zeroChild(self,parent,current):
+                
+    def zeroChild(self, parent, current):
         
-        # Parent node has greater value make Parent's Right Node as None 
+        # If Parent node has greater value make Parent's Right Node as None 
         # Else - Make Left Node as None
         if current.value > parent.value:
             parent.right= None
         else:
             parent.left= None
     
-    def oneChild(self,parent,current):
+    def oneChild(self, parent, current):
         
         #CURRENT HAS LEFT CHILD
         isLeft = False
@@ -114,8 +117,8 @@ class BTree:
             return current.value
         
         return self.max(current.right)    
-        
       
+    # ROOT LEFT RIGHT
     def preOrderTraversal(self, current):
         
         if current is None:
@@ -124,12 +127,24 @@ class BTree:
         self.preOrderTraversal(current.left)
         self.preOrderTraversal(current.right)
          
-         
-    # def postOrderTraversal(self, current):
-    #     if current is None:
-    #         return
-    #     print(current.value, end=" ")
-    #     self.preOrderTraversal(current.left)   
+    # LEFT RIGHT ROOT  
+    def postOrderTraversal(self, current):
+        if current is None:
+            return
+        self.postOrderTraversal(current.left)
+        self.postOrderTraversal(current.right)
+        print(current.value, end=" ")
+        
+    # LEFT ROOT RIGHT  
+    def InOrderTraversal(self, current):
+        if current is None:
+            return
+        self.InOrderTraversal(current.left)
+        print(current.value, end=" ")
+        self.InOrderTraversal(current.right)
+        
+        
+        
         
 
 
@@ -155,9 +170,8 @@ t1.addNode(t1.root,65)
 # t1.deleteNode(40)
 
 t1.preOrderTraversal(t1.root)
-
-
-
-
-
+print()
+t1.postOrderTraversal(t1.root)
+print()
+t1.InOrderTraversal(t1.root)
 
