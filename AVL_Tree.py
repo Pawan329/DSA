@@ -1,83 +1,94 @@
-'''
-AVL (Adelson-Velsky and Landis) Tree is a self-balancing binary search tree that 
-can perform certain operations in logarithmic time. It exhibits height-balancing 
-property by associating each node of the tree with a balance factor and making sure 
-that it stays between -1 and 1 by performing certain tree rotations.
-'''
+# CREATING NODE WITH GIVEN DATA
 
-# Creating Binary Tree using recursion and Insert/ Delete Node function added
 class Node:
-    # Node creation
-    def __init__(self,value):
-        self.value= value
-        self.left= None
-        self.right= None
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
         
-        
-class BTree:
+class Btree:
     
-    # Initially Root node will created with "None" value
     def __init__(self):
-        self.root= None
-    
-    # Add Node function, It take current as Root Node and traverse to 
-    # the left or right location and insert new node according to their value
-    def addNode(self,current,value):
+        self.root = None
         
-        # In case of first Node current will be None
+    def addNode(self, current, data):
+        
         if current is None:
-            return Node(value)
-        
-        # LEFT - Move Current
-        if value < current.value:
-            current.left = self.addNode(current.left,value)
-        
-        #RIGHT - Move Current
+            return Node(data)
+            
+        if data < current.data:
+            current.left = self.addNode(current.left, data)
         else:
-            current.right= self.addNode(current.right,value)
+            current.right = self.addNode(current.right, data)
+         
+        #========= Balacing Tree =============== 
         
-        return current  
+        bf = self.balanceFactor(current)
         
+        if bf < -1:
+            if data > current.right.data:
+                return self.leftRotate(current)
+                
+            else:
+                current.right = self.rightRotate(current.right)
+                return self.leftRotate(current)
+            
+        elif bf > 1:
+            
+            if data < current.left.data:
+                return self.rightRotate(current)
+               
+            else:
+                current.left = self.leftRotate(current.left)
+                return self.rightRotate(current)
+            
+        return current
         
-    def heightOfTree(self, current):
+    def leftRotate(self, current):
+        x = current
+        y = current.right
+        alpha = y.left
         
-        if current is None:
+        y.left = x
+        x.right = alpha
+        return y
+        
+    def rightRotate(self, current):
+        x = current
+        y = current.left
+        alpha = y.right
+        
+        y.right = x
+        x.left = alpha
+        
+        return y
+        
+    def heightOfNode(self, node):
+        
+        if node == None:
             return -1
-        return 1 + max(self.heightOfTree(current.left), self.heightOfTree(current.right))
-        
+            
+        return 1+ max(self.heightOfNode(node.left), self.heightOfNode(node.right))
         
     def balanceFactor(self, current):
-        print("Balance Factor: ", (self.heightOfTree(current.left) - self.heightOfTree(current.right)))
-    
-    
-    # preOrderTraversal - ROOT LEFT RIGHT
-    def preOrderTraversal(self, current):
+        
+        return self.heightOfNode(current.left) - self.heightOfNode(current.right)
+        
+    def preorder(self,current):
         
         if current is None:
             return
         
-        print("Node Value: ", current.value)
-        print("Height: ",self.heightOfTree(current))
-        self.balanceFactor(current)
-        self.preOrderTraversal(current.left)
-        self.preOrderTraversal(current.right)
+        print(f"D: {current.data} Ht:{self.heightOfNode(current)} bf:{self.balanceFactor(current)}")
+        self.preorder(current.left)
+        self.preorder(current.right)
+
+t1 = Btree()
+t1.root = t1.addNode(t1.root, 5)
+t1.root = t1.addNode(t1.root, 3)
+t1.root = t1.addNode(t1.root, 4)
 
 
-        
-t1= BTree()
-
-t1.root= t1.addNode(t1.root,50)
-t1.addNode(t1.root,40)
-t1.addNode(t1.root,30)
-t1.addNode(t1.root,45)
-t1.addNode(t1.root,60)
-t1.addNode(t1.root,55)
-t1.addNode(t1.root,65)
-t1.addNode(t1.root,62)
-t1.addNode(t1.root,70)
-t1.addNode(t1.root,80)
-
-t1.preOrderTraversal(t1.root)
-
+t1.preorder(t1.root)
 
 
