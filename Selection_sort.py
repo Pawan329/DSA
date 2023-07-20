@@ -10,7 +10,6 @@ the minimum element (considering ascending order) from the unsorted subarray is 
 and moved to the sorted subarray. 
 '''
 
-
 data = [10, 6, 12, 14, 2, 21, 25]
 
 for i in range(len(data)-1):
